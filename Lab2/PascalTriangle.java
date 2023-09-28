@@ -30,10 +30,24 @@ public class PascalTriangle {
 			}
 		return result;
 	}
+	// task 1.4
+	public static void moveTower(int disk, String source, String dest, String spare) {
+		if (disk == 1) {
+			System.out.println("move disk" + " " + disk + " " + "from " + source + " to " + dest);
+		} else {
+			moveTower(disk - 1, source, spare, dest);
+			System.out.println("move disk" + " " + disk + " " + "from " + source + " to " + dest);
+			moveTower(disk - 1, spare, dest, source);
+		}
+	}
+
 	public static void main(String[] args) {
 //		int[]array= {1,3,3,1};
 //		System.out.println(Arrays.toString(generateNextRow(array)));
 //		System.out.println(Arrays.toString(getPascalTriangle(4)));
-		printPascalTriangle(3);
+//		printPascalTriangle(3);
+		
+		moveTower(3, "source", "dest", "spare");
 	}
 }
+
